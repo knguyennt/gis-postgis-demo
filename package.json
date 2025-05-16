@@ -1,0 +1,28 @@
+{
+  "name": "gis-postgis-demo",
+  "version": "1.0.0",
+  "description": "Demo using postgis to store location data and build a web app to display and interact with location",
+  "main": "index.js",
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "husky": "^9.1.7"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/knguyennt/gis-postgis-demo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/knguyennt/gis-postgis-demo/issues"
+  },
+  "homepage": "https://github.com/knguyennt/gis-postgis-demo#readme",
+  "dependencies": {
+    "commitlint": "^19.8.1"
+  }
+}

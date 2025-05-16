@@ -1,19 +1,19 @@
 import {
+  Card,
+  CardBody,
+  Flex,
+  Heading,
+  VStack,
+  FormControl,
+  FormLabel,
   Input,
   Button,
   IconButton,
-  Flex,
-  Card,
-  CardBody,
-  FormControl,
-  FormLabel,
-  VStack,
-  Heading,
 } from '@chakra-ui/react';
 import { AddIcon, EditIcon } from '@chakra-ui/icons';
 import { useEffect, useState } from 'react';
 
-export const DetailCard = ({ location }) => {
+export const DetailCard = ({ location, mode = 'view' }) => {
   const [form, setForm] = useState({ name: '', lat: '', lng: '' });
   const [original, setOriginal] = useState({ name: '', lat: '', lng: '' });
   const [isEditing, setIsEditing] = useState(false);
@@ -39,29 +39,22 @@ export const DetailCard = ({ location }) => {
     form.name !== original.name || form.lat !== original.lat || form.lng !== original.lng;
 
   return (
-    <Card width="400px" p={4} boxShadow="md" borderRadius="md">
-      <Flex justify="space-between" align="center" mb={4}>
-        <Heading size="md">Location</Heading>
-        <Flex gap={2}>
-          <IconButton
-            aria-label="Edit Location"
-            icon={<EditIcon />}
-            colorScheme={isEditing ? 'gray' : 'blue'}
-            size="sm"
-            onClick={() => setIsEditing(!isEditing)}
-          />
-          <IconButton aria-label="Add Location" icon={<AddIcon />} colorScheme="green" size="sm" />
+    <Card>
+      <Card width="400px" p={4} boxShadow="md" borderRadius="md">
+        <Flex justify="space-between" align="center" mb={4}>
+          <Heading size="md">Location Details</Heading>
+          <Flex gap={2}>
+            <IconButton
+              aria-label="Edit"
+              icon={<EditIcon />}
+              colorScheme={isEditing ? 'gray' : 'blue'}
+              size="sm"
+              onClick={() => setIsEditing(!isEditing)}
+            />
+            <IconButton aria-label="Add" icon={<AddIcon />} colorScheme="green" size="sm" />
+          </Flex>
         </Flex>
-      </Flex>
 
-      <Flex mb={4} gap={2}>
-        <Input placeholder="Search..." disabled />
-        <Button colorScheme="blue" disabled>
-          Search
-        </Button>
-      </Flex>
-
-      <Card variant="outline" p={4}>
         <CardBody>
           <VStack spacing={3} align="stretch">
             <FormControl>
@@ -90,13 +83,13 @@ export const DetailCard = ({ location }) => {
                 onChange={(e) => handleChange('lng', e.target.value)}
               />
             </FormControl>
-          </VStack>
 
-          {isEditing && isFormChanged && (
-            <Button mt={4} colorScheme="teal" width="full">
-              Save
-            </Button>
-          )}
+            {isEditing && isFormChanged && (
+              <Button mt={4} colorScheme="teal">
+                Save
+              </Button>
+            )}
+          </VStack>
         </CardBody>
       </Card>
     </Card>
